@@ -1,4 +1,24 @@
-// ======= Insertion Sort =======
+const duelArea = document.getElementById("duel");
+let debug = false;
+let gameStarted = false;
+let allowedToClick = true;
+let clickTimeout;
+let gameOver = false;
+let currentScore = 0;
+let shotStartTime = 0;
+let currentState = "DEFAULT";
+let highlightedEntry = null;
+let leaderboard = [
+  { name: "Django", score: 2777 },
+  { name: "Cassidy", score: 2445 },
+  { name: "J. Wales", score: 2075 },
+  { name: "B. the Kid", score: 1400 },
+  { name: "A. Morgan", score: 1385 }
+];
+
+window.addEventListener("DOMContentLoaded", () => {
+  enterDefaultState();
+});
 
 function insertionSort(arr) {
   for (let i = 1; i < arr.length; i++) {
@@ -12,31 +32,6 @@ function insertionSort(arr) {
   }
   return arr.slice(0, 5);
 }
-
-// ======= Game Logic =======
-
-const duelArea = document.getElementById("duel");
-let debug = false;
-let gameStarted = false;
-let allowedToClick = true;
-let clickTimeout;
-let gameOver = false;
-let currentScore = 0;
-let shotStartTime = 0;
-let currentState = "DEFAULT";
-let highlightedEntry = null;
-let firstClick = true;
-let leaderboard = [
-  { name: "Django", score: 2777 },
-  { name: "Cassidy", score: 2445 },
-  { name: "J. Wales", score: 2075 },
-  { name: "B. the Kid", score: 1400 },
-  { name: "A. Morgan", score: 1385 }
-];
-
-window.addEventListener("DOMContentLoaded", () => {
-  enterDefaultState();
-});
 
 function updateState(state) {
   currentState = state;
@@ -57,14 +52,12 @@ function updateStateLabel(state) {
 duelArea.addEventListener("click", () => {
   const music = document.getElementById("bg-music");
 
-  if (firstClick) {
-    firstClick = false;
     if (music && music.paused) {
       music.volume = 0.05;
-      music.play();
+      music.play().catch(err => {
+        console.warn("Falha ao tocar música:", err);
+      });
     }
-    return;
-  }
 
   if (!allowedToClick || gameOver) return;
 
@@ -93,20 +86,16 @@ function setCharacterXTransforms(npcX, playerX) {
   player.style.transform = `translateX(${playerX})`;
 }
 
-setInterval(() => {
-  triggerThumbleweed();
-}, 20000);
 
 function enterDefaultState() {
   updateState("DEFAULT");
-  triggerThumbleweed();
   allowedToClick = true;
   gameOver = false;
   const npc = document.getElementById('npc');
   const player = document.getElementById('player');
-  setCharacterXTransforms("-6vw", "6vw");
   npc.style.backgroundImage = "url('./assets/sprites/npc-idle.png')";
   player.style.backgroundImage = "url('./assets/sprites/player-idle.png')";
+  setCharacterXTransforms("-6vw", "6vw");
   enableCharacterTransition();
 }
 
@@ -197,7 +186,7 @@ function enterEndingState(playerWon) {
 
   if (shotSound) {
     shotSound.currentTime = 0;
-    shotSound.volume = 1.0;
+    shotSound.volume = 0.2;
     shotSound.play();
   }
 
@@ -272,14 +261,14 @@ function enterScoreboardState() {
       .map((entry, index) => {
         const isHighlighted = highlightedEntry && entry.name === highlightedEntry.name && entry.score === highlightedEntry.score;
         return `<span class="${isHighlighted ? 'animate-glow text-yellow-400 font-extrabold' : ''}">
-          ${index + 1}. ${entry.name} ${entry.score}
-        </span>`;
+  ${index + 1}. ${entry.name} ${entry.score}
+</span>`;
       })
       .join("<br>");
   }
 
   if (finalScoreText) {
-    finalScoreText.textContent = `Score: ${currentScore}`;
+    finalScoreText.textContent = `Score: ${currentScore}`; 
   }
 
   if (board) {

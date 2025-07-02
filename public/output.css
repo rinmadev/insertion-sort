@@ -188,9 +188,6 @@
   .right-\[32\%\] {
     right: 32%;
   }
-  .bottom-0 {
-    bottom: calc(var(--spacing) * 0);
-  }
   .left-4 {
     left: calc(var(--spacing) * 4);
   }
@@ -213,17 +210,11 @@
     width: 100%;
     height: 100%;
   }
-  .h-24 {
-    height: calc(var(--spacing) * 24);
-  }
   .h-\[50\%\] {
     height: 50%;
   }
   .h-screen {
     height: 100vh;
-  }
-  .w-24 {
-    width: calc(var(--spacing) * 24);
   }
   .w-\[36\%\] {
     width: 36%;
@@ -233,12 +224,6 @@
   }
   .w-screen {
     width: 100vw;
-  }
-  .scale-75 {
-    --tw-scale-x: 75%;
-    --tw-scale-y: 75%;
-    --tw-scale-z: 75%;
-    scale: var(--tw-scale-x) var(--tw-scale-y);
   }
   .transform {
     transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
@@ -458,21 +443,6 @@
 body {
   font-family: 'Shadser', sans-serif;
 }
-@property --tw-scale-x {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-y {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
-@property --tw-scale-z {
-  syntax: "*";
-  inherits: false;
-  initial-value: 1;
-}
 @property --tw-rotate-x {
   syntax: "*";
   inherits: false;
@@ -508,9 +478,6 @@ body {
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
-      --tw-scale-x: 1;
-      --tw-scale-y: 1;
-      --tw-scale-z: 1;
       --tw-rotate-x: initial;
       --tw-rotate-y: initial;
       --tw-rotate-z: initial;
