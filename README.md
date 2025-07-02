@@ -10,5 +10,5 @@ O jogador participa de um duelo no estilo faroeste. Quando o sinal for dado, ele
 
 ## Pontuação
 
-A pontuação é calculada com base no tempo de reação do jogador. Quanto mais rápido for o clique após o sinal, maior será o score obtido. A fórmula utilizada é:
+A pontuação é calculada com base no tempo de reação do jogador. Quanto mais rápido for o clique após o sinal, maior será o score obtido.
 
