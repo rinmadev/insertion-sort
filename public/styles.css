@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'BSlider';
+  src: url('./assets/fonts/Black Slider.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Carnevalee';
+  src: url('./assets/fonts/Carnevalee Freakshow.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Shadser';
+  src: url('./assets/fonts/SHADSER.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@keyframes scoreboard-in {
+  0% {
+    transform: translateY(-100%);
+  }
+  50% {
+    transform: translateY(0);
+  }
+  75%,
+  80% {
+    transform: translateY(-10%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scoreboard-out {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes stamp-in {
+  0% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+  60% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes stamp-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.6);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    text-shadow: 0 0 0px gold;
+  }
+  50% {
+    text-shadow: 0 0 20px gold;
+  }
+}
+
+@keyframes tumble {
+  0% {
+    transform: translateX(-10%) rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: translateX(25%) rotate(180deg) translateY(-10px);
+  }
+  50% {
+    transform: translateX(50%) rotate(360deg) translateY(0);
+  }
+  75% {
+    transform: translateX(75%) rotate(540deg) translateY(-10px);
+  }
+  100% {
+    transform: translateX(110%) rotate(720deg) translateY(0);
+  }
+}
+
+.animate-scoreboard-in {
+  animation: scoreboard-in 1s ease-in-out forwards;
+}
+
+.animate-scoreboard-out {
+  animation: scoreboard-out 0.5s ease-in-out forwards;
+}
+
+.animate-stamp-in {
+  animation: stamp-in 0.3s cubic-bezier(0.2, 1.4, 0.4, 1) forwards;
+}
+
+.animate-stamp-out {
+  animation: stamp-out 0.3s cubic-bezier(0.6, -0.28, 0.74, 0.05) forwards;
+}
+
+.animate-glow {
+  animation: glowPulse 1.2s infinite ease-in-out;
+}
+
+.animate-tumble {
+  animation: tumble 6s linear forwards;
+}
+
+* {
+  user-select: none;
+}
+
+body {
+  font-family: 'Shadser', sans-serif;
+}

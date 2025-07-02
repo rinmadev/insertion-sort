@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="./output.css" rel="stylesheet" />
+  <title>Trigger React</title>
+</head>
+<body>
+
+  <div class="absolute w-screen h-screen -z-10">
+    <div class="size-full bg-cover bg-center bg-no-repeat" style="background-image: url('./assets/sprites/background.png');"></div>
+  </div>
+
+  <div id="duel" class="absolute w-screen h-screen overflow-hidden">
+    <div 
+      id="npc" 
+      class="absolute size-full bg-cover bg-center bg-no-repeat" 
+      style="background-image: url('./assets/sprites/npc-idle.png');">
+    </div>
+    <div 
+      id="player" 
+      class="absolute size-full bg-cover bg-center bg-no-repeat"
+      style="background-image: url('./assets/sprites/player-idle.png');">
+    </div>
+  </div>
+
+  <div id="title" class="absolute flex flex-col items-center h-[50%] w-[36%] top-[30%] right-[32%] z-50 pointer-events-none opacity-100 transition-opacity duration-800">
+    <span class="text-7xl font-bold underline text-red-600" style="-webkit-text-stroke: 0.01px black; font-family: BSlider;">TRIGGER REACT</br></span>
+    <span class="text-4xl" style="font-family: Carnevalee;">
+      click to start
+    </span>
+
+  <div hidden>
+    <img src="./assets/sprites/player-idle.png" alt="">
+    <img src="./assets/sprites/player-walk.png" alt="">
+    <img src="./assets/sprites/player-shot.png" alt="">
+    <img src="./assets/sprites/player-death.png" alt="">
+    <img src="./assets/sprites/npc-idle.png" alt="">
+    <img src="./assets/sprites/npc-walk.png" alt="">
+    <img src="./assets/sprites/npc-shot.png" alt="">
+    <img src="./assets/sprites/npc-death.png" alt="">
+    <img src="./assets/sprites/scoreboard.png" alt="">
+    <img src="./assets/sprites/score.png" alt="">
+    <img src="./assets/sprites/retry.png" alt="">
+  </div>
+
+  <div id="scoreboard" class="hidden absolute w-screen h-screen bg-cover bg-center bg-no-repeat" style="background-image: url('./assets/sprites/scoreboard.png'); z-index: 50;"></div>
+
+  <div id="scoreboard-text" class="absolute flex flex-col items-center h-[50%] w-[36%] top-[30%] right-[32%] z-50 opacity-0 pointer-events-none">
+    <span class="text-7xl font-bold underline text-amber-950" id="score" style="-webkit-text-stroke: 0.01px black; font-family: BSlider;">LEADERBOARD</br></span>
+    <span id="leaderboard" class="text-4xl leading-14" style="font-family: Carnevalee;"></span>
+    <div class="w-full mt-6 flex justify-between px-6 text-5xl font-bold text-amber-950" style="font-family: Carnevalee;">
+      <span id="final-score" class="text-4xl">Score: 0</span>
+      <button id="retry-button" onclick="retry()" class="text-right hover:underline cursor-pointer">Retry</button>
+    </div>
+  </div>
+
+  <script src="./main.js"></script>
+
+  <!-- Áudios -->
+  <audio id="bg-music" src="./assets/audio/backgroundmusic.mp3" autoplay loop></audio>
+  <audio id="revolver-music" src="./assets/audio/revolver.mp3"></audio>
+  <audio id="shot-sound" src="./assets/audio/shot.mp3"></audio>
+
+</body>
+</html>
