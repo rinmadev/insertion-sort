@@ -2,7 +2,7 @@
 
 Trigger React é um jogo temático de velho-oeste desenvolvido com HTML, CSS e JavaScript. Ele testa o tempo de reação do jogador em um duelo rápido e mortal.
 
-![Título do Jogo](assets/title-screen.png)
+![Title-Screen](public/assets/title-screen.png)
 
 ## Sobre o jogo
 
